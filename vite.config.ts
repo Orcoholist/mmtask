@@ -3,14 +3,15 @@ import vue from '@vitejs/plugin-vue';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const path = require('path');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@vue': path.resolve(__dirname, './node_modules/@vue'),
     },
   },
 });

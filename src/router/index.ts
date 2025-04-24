@@ -1,19 +1,19 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import { useAuthStore } from '@/stores/authStore';
+import { useAuthStore } from '../stores/authStore';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
-    component: () => import('@/views/LoginView.vue'),
+    component: () => import('../views/LoginView.vue'),
   },
   {
     path: '/articles',
-    component: () => import('@/views/ArticlesView.vue'),
+    component: () => import('../views/ArticlesView.vue'),
     meta: { requiresAuth: true },
   },
   {
     path: '/favorites',
-    component: () => import('@/views/FavoritesView.vue'),
+    component: () => import('../views/FavoritesView.vue'),
     meta: { requiresAuth: true },
   },
   {

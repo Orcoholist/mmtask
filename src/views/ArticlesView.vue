@@ -35,8 +35,8 @@
   <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { useQuery } from '@vue/apollo-composable'
-  import { POSTS_QUERY } from '@/graphql/queries'
-  import { useFavoritesStore } from '@/stores/favoritesStore'
+  import { POSTS_QUERY } from '../graphql/queries'
+  import { useFavoritesStore } from '../stores/favoritesStore'
   
   const searchQuery = ref('')
   const favoritesStore = useFavoritesStore()
@@ -49,7 +49,7 @@
   const posts = computed(() => result.value?.posts?.data || [])
   console.log( result);
   const filteredPosts = computed(() => 
-    posts.value.filter(post => 
+    posts.value.filter((post: { title: string }) => 
       post.title.toLowerCase().includes(searchQuery.value.toLowerCase())
     )
   )
@@ -58,7 +58,7 @@
     if (favoritesStore.isFavorite(id)) {
       favoritesStore.removeFavorite(id)
       const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-      const updatedFavorites = favorites.filter(favId => favId !== id);
+      const updatedFavorites = favorites.filter((favId: number) => favId !== id);
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     } else {
       favoritesStore.addFavorite(id)

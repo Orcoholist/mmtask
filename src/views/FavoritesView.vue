@@ -14,9 +14,9 @@
   
   <script setup lang="ts">
   import { computed } from 'vue';
-  import { useFavoritesStore } from '@/stores/favoritesStore';
+  import { useFavoritesStore } from '../stores/favoritesStore';
   import { useQuery } from '@vue/apollo-composable';
-  import { POSTS_QUERY } from '@/graphql/queries';
+  import { POSTS_QUERY } from '../graphql/queries';
   
   const favoritesStore = useFavoritesStore();
   
@@ -28,7 +28,7 @@
  
   const favorites = computed(() => {
     const allPosts = result.value?.posts?.data || [];
-    return allPosts.filter(post => favoritesStore.isFavorite(post.id));
+    return allPosts.filter((post: { id: number; }) => favoritesStore.isFavorite(post.id));
   });
   
 

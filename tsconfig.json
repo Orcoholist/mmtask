@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "target": "es5",
-    "module": "commonjs",
-    "outDir": "dist",
-    "baseUrl": ".",
+    "module": "nodenext", 
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true, 
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "dist" ,
+    "baseUrl": "./src", 
     "paths": {
-      "@/*": ["./src/*"]
+      "@/graphql/*": ["./src/graphql/*"]
     }
-  }
+  },
+  "include": ["src/**/*"] 
 }
